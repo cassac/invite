@@ -55,7 +55,7 @@ db.session.add(guest)
 db.session.commit()
 ```
 ```
-** use to add multiple guests at once db.session.add_all([var1, var2, var3])
+** To add multiple guests at once use: db.session.add_all([var1, var2, var3])
 
 Passwords are automatically set to the string inside the models.py User model.
 
