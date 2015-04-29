@@ -57,8 +57,13 @@ db.session.add(guest)
 ```
 db.session.commit()
 ```
-```
+
 ** To add multiple guests at once use: db.session.add_all([var1, var2, var3])
 
 Passwords are automatically set to the string inside the models.py User model.
 
+4) Test it out
+```
+python manage.py runserver -p 5000
+```
+Then visit URL http://localhost:5000
