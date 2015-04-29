@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='container'>
+	<div>
+	{% for message in get_flashed_messages(with_categories=true) %}
+		<div class="alert alert-{{ message[0]}}">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			{{ message[1] }}
+		</div>
+	{% endfor %}
+	</div>	
+	<div class='page-header'>
+		<h1>Add Pictures</h1>
+		<p>Uploaded pictures will be displayed for all guests to view.</p>
+	</div>
+	<div class='content'>
+		<form action="" method=post enctype=multipart/form-data>
+		{{ form.csrf_token }}		
+			<dl>
+				<dd><input class='btn btn-default' type=file name=file[] multiple>
+			</dl>
+			<p><input class='btn btn-default' type=submit value=Submit></p>
+		</form>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+	<div class="row">
+		<div class='container'>
+			<div class="col-xs-12 col-md-4 col-lg-4">
+				{% for message in get_flashed_messages() %}
+				<div class="alert alert-warning">
+				    <button type="button" class="close" data-dismiss="alert">&times;</button>
+				    {{ message }}
+				</div>
+				{% endfor %}
+				<!-- GUEST LIST BELOW -->
+				<ul class="list-group">
+					<li class="list-group-item"><h3>Who's Invited?</h3></li>
+					{% if current_user.pictures.count() == 0 %}	
+							<li class="list-group-item">You can't view the guest list unless you upload at least one funny picture, preferably of the birthday person.
+							<br>
+							<br>	
+							<a href="{{ url_for('main.add_pictures') }}"><button type="button" class="btn btn-info btn-lg btn-block">Upload Your First Picture Here</button></a>
+
+						</li>
+					{% else %}		
+						{% for guest in guests %}
+							<li class="list-group-item">{{ guest.name }}</li>
+						{% endfor %}					
+					{% endif %}
+				</ul>
+				<!-- END GUEST LIST -->
+			</div>
+			<div class="col-xs-12 col-md-4 col-lg-4">
+				<!-- LIST OF USER PICTURE STATS -->
+				<ul class="list-group">
+					<li class="list-group-item"><h3>Who's Uploaded Pictures?</h3></li>			
+					{% for guest in guests %}
+						<!-- LIST OF GUESTS WHO'VE UPLOADED PICTURES -->
+						{% if guest.pictures.count() > 0 %}
+							<li class="list-group-item">Thank you <strong>{{ guest.name }}</strong></li>
+						{% else %}
+							<li class="list-group-item">
+							<!-- LEAVE BLANK FOR AESTHETICS -->
+							</li>
+						{% endif %}
+						
+					{% endfor %}
+				</ul>
+				<!-- END LIST USER PICTURE STATS -->
+			</div>
+			<div class="col-xs-12 col-md-4 col-lg-4">
+				<!-- LIST OF USER PICTURE STATS -->
+				<ul class="list-group">
+					<li class="list-group-item"><h3>Recently Uploaded Pictures</h3></li>
+					<li class="list-group-item">	
+						{% for pic in pictures %}
+								<img class="img-rounded" src="{{ url_for('static', filename='uploads/'+pic.filename) }}">						
+						{% endfor %}
+					</li>
+				</ul>
+				<!-- END LIST USER PICTURE STATS -->
+			</div>			
+		</div>
+	</div>
+{% endblock %}	

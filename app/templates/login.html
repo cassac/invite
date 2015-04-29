@@ -1,0 +1,27 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<div class='container row'>
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<div class='page-header'>
+			<h1>Its Someone's Birthday</h1>	
+			<p>Login to confirm your invitation status and upload pictures of the person who's turning one year older.</p>
+		</div>
+		{% block page_content %}
+			{% for message in get_flashed_messages() %}
+			   <div class="alert alert-warning">
+			        <button type="button" class="close" data-dismiss="alert">&times;</button>
+			        {{ message }}
+			    </div>
+			{% endfor %}
+			<div>
+				{{ wtf.quick_form(form) }}
+			</div>
+		{% endblock %}
+	</div>
+	<div class="col-md-4"></div>
+</div>
+{% endblock %}
+
+

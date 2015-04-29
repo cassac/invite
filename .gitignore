@@ -1,0 +1,9 @@
+*.db
+*.pyc
+*.zip
+*.exe
+*.txt
+uploads/
+venv/
+add_guests.py
+add_guests.pyc

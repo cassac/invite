@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<div class='container'>
+	<div class="row">
+	  <div class="col-xs-12 col-md-6 col-lg-6">
+	  		{% for message in get_flashed_messages() %}
+	<div class="alert alert-warning">
+	    <button type="button" class="close" data-dismiss="alert">&times;</button>
+	    {{ message }}
+	</div>
+	{% endfor %}
+	  	<div>
+			<ul class="list-group">			
+				<li class="list-group-item" style="background-color:#d9edf7">
+					{{ wtf.quick_form(form) }}
+				</li>
+			</ul>
+			<ul class="list-group">			
+				<li class="list-group-item"><strong>WHAT:</strong></li>
+				<li class="list-group-item">It's Someone's birthday party. Come eat, drink, laugh and celebrate!</li>
+			</ul>
+			<ul class="list-group">			
+				<li class="list-group-item"><strong>WHEN:</strong></li>
+				<li class="list-group-item">Saturday August 8th - 4:00PM</li>
+			</ul>
+			<ul class="list-group">			
+				<li class="list-group-item"><strong>NOTES:</strong></li>
+				<li class="list-group-item">This is NOT a surprise party. Don't want to buy a gift? Then upload some extra pictures on the right.</li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item"><strong>WHERE:</strong></li>
+				<li class="list-group-item">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12615.51843619414!2d-122.48621399999993!3d37.769420999999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808587726045f763%3A0x71be8b68ef3ba730!2sGolden+Gate+Park!5e0!3m2!1sen!2sus!4v1430253856481" width="400" height="300" frameborder="0" style="border:0"></iframe>
+				</li>
+			</ul>		
+	  	</div>
+	  </div>
+	  <div class="col-xs-12 col-md-6 col-lg-6">
+	  	<h1>Pictures You've Uploaded</h1>
+	  	<p>Upload some pictures below.</p>
+		  	<div class="row">
+		  		{% if user.pictures.count() == 0 %}
+		  			<ul class="list-group">	
+		  				<li class="list-group-item">
+		  					<br>
+		  					<a href="{{ url_for('main.add_pictures') }}"><button type="button" class="btn btn-info btn-lg btn-block">Upload Your First Picture Here</button></a>
+		  				</li>
+			  		</ul>
+		  		{% else %}
+		  			<ul class="list-group">	
+		  				<li class="list-group-item">
+		  					{% for pic in user.pictures[:8:-1] %}
+		  						<img class="img-rounded" src="static/uploads/{{ pic.filename }}">
+		  					{% endfor %}
+		  					<a href="{{ url_for('main.add_pictures') }}"><button type="button" class="btn btn-info btn-lg btn-block">Upload More Pictures</button></a>
+		  				</li>
+			  		</ul>
+		  		{% endif %}
+		  	</div>
+	  </div>
+	</div>
+
+</div>
+{% endblock %}	
