@@ -16,7 +16,7 @@ in the User model and adjust verify_password()
 -event details on dashboard.html
 
 1) Install libraries via pip
-> pip install -r requirements.txt
+'pip install -r requirements.txt
 
 2) Create database
 > python manage.py shell
