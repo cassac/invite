@@ -1,7 +1,10 @@
 # Invite App
 Invitation and RSVP management application - Python/Flask App
 
-Tracks RSVP's and uses a Gmail account to send out invitations.
+Sends invitations via your Gmail account, tracks guests RSVP status
+via link in email, upload photos for everyone to view before. Displays
+event information and map for everyone to view. Users cannot view
+pictures until they have uploaded one themselves.
 
 Required Adjustments Before Use
 - Edits need to be made to the email configurations in config.py
