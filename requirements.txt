@@ -72,7 +72,7 @@ pyOpenSSL==0.13.1
 pyparsing==2.0.1
 python-dateutil==2.8.0
 pytz==2013.7
-PyYAML==3.13
+PyYAML==5.1
 requests==2.20.1
 scipy==0.13.0b1
 semantic-version==2.5.0
