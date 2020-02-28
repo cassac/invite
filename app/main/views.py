@@ -3,7 +3,7 @@ from flask import render_template, url_for, redirect, request, flash
 from flask.ext.login import login_required, login_user, logout_user, current_user
 from . import main
 from ..models import *
-from forms import *
+from .forms import *
 from .. import db, mail
 from ..decorators import *
 from werkzeug import secure_filename
@@ -13,7 +13,7 @@ from config import UPLOAD_FOLDER, email_config
 import shortuuid
 from sqlalchemy import desc
 
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'jpe' 'gif', 'pdf', 'wmv', 
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'jpe' 'gif', 'pdf', 'wmv',
 	'mov', 'mpg', 'mpg4', 'mpeg', 'avi', 'mp4', 'doc', 'docx', 'txt'])
 ##################################
 # HELPER FUNCTION FOR FLASK-UPLOAD
@@ -38,8 +38,8 @@ def login():
 			return redirect(url_for('main.dashboard'))
 		flash('Invalid username or password.')
 	## USER REROUTED IF ALREADY LOGGED IN
-	if not current_user.is_anonymous():
-		return redirect(url_for('main.dashboard'))
+	# if not current_user.is_anonymous():
+	# 	return redirect(url_for('main.dashboard'))
 	return render_template('login.html', form=form)
 
 @main.route('/logout', methods=['GET', 'POST'])
